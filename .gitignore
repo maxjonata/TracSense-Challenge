@@ -1,0 +1,47 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+tracsense-backend/node_modules
+tracsense-backend/.pnp
+tracsense-backend/.pnp.js
+
+# testing
+tracsense-backend/coverage
+
+# production
+tracsense-backend/build
+
+# misc
+tracsense-backend/.DS_Store
+tracsense-backend/.env.local
+tracsense-backend/.env.development.local
+tracsense-backend/.env.test.local
+tracsense-backend/.env.production.local
+
+tracsense-backend/npm-debug.log*
+tracsense-backend/yarn-debug.log*
+tracsense-backend/yarn-error.log*
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+tracsense-challenge/node_modules
+tracsense-challenge/.pnp
+tracsense-challenge/.pnp.js
+
+# testing
+tracsense-challenge/coverage
+
+# production
+tracsense-challenge/build
+
+# misc
+tracsense-challenge/.DS_Store
+tracsense-challenge/.env.local
+tracsense-challenge/.env.development.local
+tracsense-challenge/.env.test.local
+tracsense-challenge/.env.production.local
+
+tracsense-challenge/npm-debug.log*
+tracsense-challenge/yarn-debug.log*
+tracsense-challenge/yarn-error.log*
