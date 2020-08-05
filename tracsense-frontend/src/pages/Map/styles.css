@@ -1,0 +1,19 @@
+.map {
+	height: 100%;
+	width: 100%;
+}
+
+h1 {
+	display:flex;
+	border-width: 5px;
+	border-color: black;
+	border-style: solid;
+	margin: 0;
+	padding: 10px;
+}
+
+.application {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}

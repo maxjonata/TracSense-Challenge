@@ -25,23 +25,23 @@ tracsense-backend/yarn-error.log*
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-tracsense-challenge/node_modules
-tracsense-challenge/.pnp
-tracsense-challenge/.pnp.js
+tracsense-frontend/node_modules
+tracsense-frontend/.pnp
+tracsense-frontend/.pnp.js
 
 # testing
-tracsense-challenge/coverage
+tracsense-frontend/coverage
 
 # production
-tracsense-challenge/build
+tracsense-frontend/build
 
 # misc
-tracsense-challenge/.DS_Store
-tracsense-challenge/.env.local
-tracsense-challenge/.env.development.local
-tracsense-challenge/.env.test.local
-tracsense-challenge/.env.production.local
+tracsense-frontend/.DS_Store
+tracsense-frontend/.env.local
+tracsense-frontend/.env.development.local
+tracsense-frontend/.env.test.local
+tracsense-frontend/.env.production.local
 
-tracsense-challenge/npm-debug.log*
-tracsense-challenge/yarn-debug.log*
-tracsense-challenge/yarn-error.log*
+tracsense-frontend/npm-debug.log*
+tracsense-frontend/yarn-debug.log*
+tracsense-frontend/yarn-error.log*
