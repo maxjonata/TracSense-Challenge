@@ -9,9 +9,12 @@ import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import * as olProj from 'ol/proj';
 import {defaults as defaultControls} from 'ol/control';
-import Overlay from 'ol/Overlay';
 import {Chart} from 'chart.js';
 import {Icon, Style} from 'ol/style';
+import "ol-ext/dist/ol-ext.css";
+
+import Popup from "ol-ext/overlay/Popup"
+import Select from "ol/interaction/Select"
 
 import api from '../../services/api';
 
@@ -83,66 +86,51 @@ export default function MapPage() {
 			target: 'map'
 		});
 
-		var overlay = new Overlay({
-			element: container.current,
+		var popup = new Popup({
+			popupClass: "default", //"tooltips", "warning" "black" "default", "tips", "shadow",
+			closeBox: true,
+			positioning: 'auto',
 			autoPan: true,
-			autoPanAnimation: {
-				duration: 250
-			}
+			autoPanAnimation: { duration: 250 }
+		});
+		map.addOverlay(popup);
+
+		var select = new Select({});
+		map.addInteraction(select);
+
+		select.getFeatures().on(['add'], function(e) {
+			var feature = e.element;
+			var content = `<canvas id="chart" width="900" height="400" style="background-color: white"></canvas>`;
+
+			popup.show(feature.getGeometry().getFirstCoordinate(), content);
+			new Chart(document.getElementById('chart').getContext('2d'), {
+				type: 'line',
+				data: {
+					labels: feature.get('timeSeries')[0],
+					datasets: [{
+						data: feature.get('timeSeries')[1],
+						borderColor: 'orange',
+						fill:false,
+						lineTension: 0,
+						pointRadius: 0,
+						borderWidth: 2
+					}]
+				},
+				options: {
+					title: {
+						display: true,
+						text: feature.get('name')
+					},
+					legend: {
+						display: false
+					}
+				}
+			})
 		});
 
-		map.addOverlay(overlay);
-
-		closer.current.onclick = function() {
-			overlay.setPosition(undefined);
-			closer.blur();
-			return false;
-		};
-
-		map.on('singleclick', function (event) {
-			var feature = map.forEachFeatureAtPixel(event.pixel, function (feature) {
-				return feature;
-			});
-
-			if (map.hasFeatureAtPixel(event.pixel) === true) {
-				var coordinate = event.coordinate;
-
-				var p1 = new Promise(function(resolve, reject) {
-					content.current.innerHTML = '<canvas id="chart" width="900" height="400" style="background-color: white">OOOIIII</canvas>'
-				})
-
-				p1.then(
-					new Chart(content.current.firstChild.getContext('2d'), {
-						type: 'line',
-						data: {
-							labels: feature.get('timeSeries')[0],
-							datasets: [{
-								data: feature.get('timeSeries')[1],
-								borderColor: 'orange',
-								fill:false,
-								lineTension: 0,
-								pointRadius: 0,
-								borderWidth: 2
-							}]
-						},
-						options: {
-							title: {
-								display: true,
-								text: feature.get('name')
-							},
-							legend: {
-								display: false
-							}
-						}
-					})
-				)
-				
-				overlay.setPosition(coordinate);
-			} else {
-				overlay.setPosition(undefined);
-				closer.current.blur();
-			}
-		});
+		select.getFeatures().on(['remove'], function(e) {
+			popup.hide(); 
+		})
 	}, [])
 
 	const container = useRef(null);
