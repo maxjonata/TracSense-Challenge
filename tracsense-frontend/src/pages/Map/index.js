@@ -154,7 +154,7 @@ export default function MapPage() {
 			<h1>{localStorage.getItem('clientName')}</h1>
 			<div id="map" className="map"></div>
 			<div id="popup" className="ol-popup" ref={container}>
-				<a href="#" id="popup-closer" className="ol-popup-closer" ref={closer}></a>
+				<div id="popup-closer" className="ol-popup-closer" ref={closer}></div>
 				<div id="popup-content" ref={content}>
 				</div>
 			</div>

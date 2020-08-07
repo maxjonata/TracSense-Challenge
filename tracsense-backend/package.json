@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-	"start": "nodemon index.js",
-	"test": "jest"
+    "start": "nodemon index.js",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -13,7 +13,6 @@
     "celebrate": "^12.1.2",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
-    "d3": "^5.16.0",
     "dotenv-safe": "^8.2.0",
     "everpolate": "0.0.3",
     "express": "^4.17.1",
@@ -21,7 +20,6 @@
     "helmet": "^3.23.3",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.2",
-    "mongoose": "^5.9.27",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
